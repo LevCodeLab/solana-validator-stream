@@ -1,0 +1,142 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="920" height="500" viewBox="0 0 920 500" fill="none">
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 1.5 L 8 5 L 0 8.5 z" fill="#71717A"/>
+    </marker>
+  </defs>
+
+  <!-- Outer Dark-Obsidian Frame -->
+  <rect x="0.5" y="0.5" width="919" height="499" rx="10" fill="#0D0D10" stroke="#26262E"/>
+
+  <!-- Top Window Chrome -->
+  <rect x="1" y="1" width="918" height="40" rx="9" fill="#141418"/>
+  <line x1="1" y1="41" x2="919" y2="41" stroke="#26262E" stroke-width="1"/>
+
+  <!-- Monochrome Window Dots -->
+  <circle cx="22" cy="21" r="5" fill="#26262E" stroke="#3F3F46" stroke-width="1"/>
+  <circle cx="38" cy="21" r="5" fill="#26262E" stroke="#3F3F46" stroke-width="1"/>
+  <circle cx="54" cy="21" r="5" fill="#26262E" stroke="#3F3F46" stroke-width="1"/>
+
+  <!-- Window Title -->
+  <text x="76" y="25" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="12" font-weight="600">solana-validator-stream // agave geyser cdylib -&gt; uds ndjson</text>
+
+  <!-- Monochrome Status Badge -->
+  <rect x="748" y="10" width="154" height="22" rx="4" fill="#141418" stroke="#26262E"/>
+  <circle cx="761" cy="21" r="3" fill="#FFFFFF"/>
+  <text x="771" y="25" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">UDS SOCKET ATTACHED</text>
+
+  <!-- Section Label: Pipeline -->
+  <text x="20" y="64" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10" letter-spacing="0.8">IN-PROCESS VALIDATOR PIPELINE (ZERO PROTOBUF / ZERO BLOCKING)</text>
+
+  <!-- Stage 1: Agave Validator -->
+  <rect x="20" y="74" width="198" height="92" rx="6" fill="#141418" stroke="#26262E"/>
+  <rect x="30" y="84" width="84" height="18" rx="3" fill="#1C1C22" stroke="#26262E"/>
+  <text x="37" y="96" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">AGAVE GEYSER</text>
+  <text x="30" y="118" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600">ValidatorStreamPlugin</text>
+  <text x="30" y="135" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">Slot | Bank | DeshredTx</text>
+  <text x="30" y="151" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">callback cost: ~0.18 us</text>
+
+  <!-- Connector 1 -->
+  <line x1="218" y1="120" x2="246" y2="120" stroke="#3F3F46" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="220" y="111" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">try_send</text>
+
+  <!-- Stage 2: Bounded Channel -->
+  <rect x="248" y="74" width="198" height="92" rx="6" fill="#141418" stroke="#26262E"/>
+  <rect x="258" y="84" width="96" height="18" rx="3" fill="#1C1C22" stroke="#26262E"/>
+  <text x="265" y="96" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">BOUNDED BUFFER</text>
+  <text x="258" y="118" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600">StreamIpcWriter</text>
+  <text x="258" y="135" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">cap: 65,536 frames</text>
+  <text x="258" y="151" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">atomic sent / drop stats</text>
+
+  <!-- Connector 2 -->
+  <line x1="446" y1="120" x2="474" y2="120" stroke="#3F3F46" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="449" y="111" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">NDJSON</text>
+
+  <!-- Stage 3: Unix Domain Socket -->
+  <rect x="476" y="74" width="206" height="92" rx="6" fill="#1C1C22" stroke="#3F3F46"/>
+  <rect x="486" y="84" width="84" height="18" rx="3" fill="#141418" stroke="#26262E"/>
+  <text x="493" y="96" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">AF_UNIX IPC</text>
+  <text x="486" y="118" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">solana_validator_stream.sock</text>
+  <text x="486" y="135" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">auto-reconnect: 50ms</text>
+  <text x="486" y="151" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">p50: 4.2 us | p99: 11.8 us</text>
+
+  <!-- Connector 3 -->
+  <line x1="682" y1="120" x2="710" y2="120" stroke="#3F3F46" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="685" y="111" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="8.5">stream</text>
+
+  <!-- Stage 4: Downstream Reader -->
+  <rect x="712" y="74" width="188" height="92" rx="6" fill="#141418" stroke="#26262E"/>
+  <rect x="722" y="84" width="98" height="18" rx="3" fill="#1C1C22" stroke="#26262E"/>
+  <text x="729" y="96" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5" font-weight="600">RUST SUBSCRIBER</text>
+  <text x="722" y="118" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="11" font-weight="600">ValidatorStreamReader</text>
+  <text x="722" y="135" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">tokio + blocking readers</text>
+  <text x="722" y="151" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">seq-gap + parse counters</text>
+
+  <!-- Telemetry Metric Strip -->
+  <rect x="20" y="180" width="211" height="54" rx="6" fill="#141418" stroke="#26262E"/>
+  <text x="32" y="198" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">FRAMES DELIVERED</text>
+  <text x="32" y="220" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700">1,482,910</text>
+  <text x="132" y="220" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">seq_gaps: 0</text>
+
+  <rect x="243" y="180" width="211" height="54" rx="6" fill="#141418" stroke="#26262E"/>
+  <text x="255" y="198" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">IPC HOP LATENCY</text>
+  <text x="255" y="220" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700">4.2 us</text>
+  <text x="325" y="220" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">p99: 11.8 us</text>
+
+  <rect x="466" y="180" width="211" height="54" rx="6" fill="#141418" stroke="#26262E"/>
+  <text x="478" y="198" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">VALIDATOR STALL TIME</text>
+  <text x="478" y="220" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700">0.00 ms</text>
+  <text x="558" y="220" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">dropped: 0</text>
+
+  <rect x="689" y="180" width="211" height="54" rx="6" fill="#141418" stroke="#26262E"/>
+  <text x="701" y="198" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="9.5">LATEST OBSERVED SLOT</text>
+  <text x="701" y="220" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="15" font-weight="700">312,849,104</text>
+  <text x="815" y="220" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">bank #42</text>
+
+  <!-- Live NDJSON Stream Console -->
+  <rect x="20" y="248" width="880" height="234" rx="6" fill="#141418" stroke="#26262E"/>
+  <rect x="21" y="249" width="878" height="28" rx="5" fill="#1C1C22"/>
+  <line x1="20" y1="277" x2="900" y2="277" stroke="#26262E" stroke-width="1"/>
+  <text x="34" y="267" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">$ cargo run --example uds_loopback_stream</text>
+  <text x="646" y="267" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">observer=validator-mumbai-01 // proto=v1</text>
+
+  <!-- Log Lines -->
+  <text x="34" y="301" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">[03:14:09.811042]</text>
+  <text x="154" y="301" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">seq=1482905</text>
+  <text x="242" y="301" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">+3.8us</text>
+  <text x="298" y="301" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">SlotStatus   </text>
+  <text x="404" y="301" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">slot=312849104  parent=312849103  status=CreatedBank</text>
+
+  <text x="34" y="325" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">[03:14:09.814190]</text>
+  <text x="154" y="325" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">seq=1482906</text>
+  <text x="242" y="325" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">+4.1us</text>
+  <text x="298" y="325" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">DeshredTx    </text>
+  <text x="404" y="325" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">slot=312849104  fec_set=12        sig=tx_deshred_0482  bytes=248</text>
+
+  <text x="34" y="349" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">[03:14:09.819504]</text>
+  <text x="154" y="349" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">seq=1482907</text>
+  <text x="242" y="349" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">+3.9us</text>
+  <text x="298" y="349" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">Entry        </text>
+  <text x="404" y="349" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">slot=312849104  bank_id=42        entry_idx=18  tx_count=64</text>
+
+  <text x="34" y="373" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">[03:14:09.882115]</text>
+  <text x="154" y="373" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">seq=1482908</text>
+  <text x="242" y="373" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">+4.4us</text>
+  <text x="298" y="373" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">UpdateParent </text>
+  <text x="404" y="373" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">slot=312849105  cleared_bank=41   parent_slot=312849104  src=deshred</text>
+
+  <text x="34" y="397" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">[03:14:09.941008]</text>
+  <text x="154" y="397" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">seq=1482909</text>
+  <text x="242" y="397" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">+4.6us</text>
+  <text x="298" y="397" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">BlockFooter  </text>
+  <text x="404" y="397" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">slot=312849104  bank_id=42        agent=agave/2.2.0  final_cert=96B</text>
+
+  <text x="34" y="421" fill="#71717A" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">[03:14:09.944312]</text>
+  <text x="154" y="421" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">seq=1482910</text>
+  <text x="242" y="421" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5" font-weight="600">+3.7us</text>
+  <text x="298" y="421" fill="#FFFFFF" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">BankLifecycle</text>
+  <text x="404" y="421" fill="#E4E4E7" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10.5">slot=312849104  bank_id=42        status=Confirmed  sent=1482910</text>
+
+  <line x1="34" y1="438" x2="886" y2="438" stroke="#26262E" stroke-width="1"/>
+  <text x="34" y="460" fill="#A1A1AA" font-family="ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace" font-size="10">telemetry_snapshot :: rx_total=1482910  slot=412090  bank=398412  deshred=520114  entry=141020  footer=11274  parse_err=0</text>
+</svg>
