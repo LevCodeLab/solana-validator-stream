@@ -1,0 +1,12 @@
+{
+  "libpath": "./target/release/libsolana_validator_stream.so",
+  "uds_socket_path": "/tmp/solana_validator_stream.sock",
+  "observer_validator_id": "validator-mumbai-01",
+  "enable_bank_status": true,
+  "enable_block_footer": true,
+  "enable_update_parent": true,
+  "enable_deshred": true,
+  "enable_entries": true,
+  "channel_buffer_capacity": 65536,
+  "reconnect_backoff_ms": 50
+}

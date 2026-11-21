@@ -5,11 +5,16 @@ pub mod config;
 pub mod events;
 pub mod ipc;
 pub mod plugin;
+pub mod reader;
 
 pub use config::{ConfigError, PluginConfig, DEFAULT_SOCKET_PATH};
 pub use events::{StreamPayload, ValidatorStreamFrame};
 pub use ipc::{IpcStats, StreamIpcWriter};
 pub use plugin::ValidatorStreamPlugin;
+pub use reader::{
+    BlockingStreamReader, BlockingStreamSession, ReaderError, StreamTelemetryCounters,
+    TelemetrySnapshot, ValidatorStreamReader,
+};
 
 /// Crate wire protocol version marker.
 pub const STREAM_PROTOCOL_VERSION: u32 = 1;
