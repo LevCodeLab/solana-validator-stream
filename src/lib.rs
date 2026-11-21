@@ -1,8 +1,10 @@
 //! In-process Agave Geyser plugin and Unix Domain Socket NDJSON frame streamer
 //! for low-latency Solana validator callbacks.
 
+pub mod config;
 pub mod events;
 
+pub use config::{ConfigError, PluginConfig, DEFAULT_SOCKET_PATH};
 pub use events::{StreamPayload, ValidatorStreamFrame};
 
 /// Crate wire protocol version marker.
